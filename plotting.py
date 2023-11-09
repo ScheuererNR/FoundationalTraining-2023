@@ -18,6 +18,26 @@ import cartopy.feature as cfeature
 from cartopy.mpl.ticker import LongitudeFormatter, LatitudeFormatter
 
 from mpl_toolkits.axes_grid1 import make_axes_locatable
+from colorspace import qualitative_hcl
+from matplotlib.colors import ListedColormap
+
+
+#def create_michaels_onset_colors():
+#    a = qualitative_hcl(h=[60,360], c=95, l=90)(5)
+#    b = qualitative_hcl(h=[60,360], c=80, l=70)(5)
+#    c = qualitative_hcl(h=[60,360], c=65, l=50)(5)
+#    d = qualitative_hcl(h=[60,360], c=50, l=30)(5)
+#    onsetcol = np.ones((23,4))
+#    onsetcol[0,:3] = np.array([242/256, 242/256, 242/256])
+#    onsetcol[-2,:3] = np.array([162/256, 162/256, 162/256])
+#    onsetcol[-1,:3] = np.array([102/256, 102/256, 102/256])
+#    for i in range(5):
+#        onsetcol[1+0+4*i,:3] = colors.to_rgb(a[i])
+#        onsetcol[1+1+4*i,:3] = colors.to_rgb(b[i])
+#        onsetcol[1+2+4*i,:3] = colors.to_rgb(c[i])
+#        onsetcol[1+3+4*i,:3] = colors.to_rgb(d[i])
+#    newcmp = ListedColormap(onsetcol)
+#    return newcmp
 
 
 def get_xticks(x_extent, inc = 1):
