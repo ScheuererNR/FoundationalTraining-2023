@@ -20,9 +20,9 @@ from miscellaneous import interpolate_forecasts     # function for bilinear inte
 # In[2]:
 
 
-fcst_dir = '/home/michael/bigdisk2/pro/SFE/Systems_daily_nc/'
+fcst_dir = '/home/confer/michael/data/'
 #fcst_dir = '/home/ghacof/COF65/gcm/'
-data_dir = '/home/michael/Desktop/FTW2023/'
+data_dir = '/home/confer/michael/data/'
 
 
 # We set a few parameters that are fixed for this exercise but can vary in general:
