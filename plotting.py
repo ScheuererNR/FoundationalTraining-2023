@@ -2,13 +2,10 @@
 # Functions for plotting. Some of this code was obtained from Joseph Bellier and then modified
 #  and extended for the purposes of this project.
 
-
 import numpy as np
 import matplotlib
 
 import matplotlib.pyplot as plt
-import matplotlib.colors as colors
-import matplotlib.patches as mpatches
 
 import pickle
 
@@ -18,26 +15,6 @@ import cartopy.feature as cfeature
 from cartopy.mpl.ticker import LongitudeFormatter, LatitudeFormatter
 
 from mpl_toolkits.axes_grid1 import make_axes_locatable
-from colorspace import qualitative_hcl
-from matplotlib.colors import ListedColormap
-
-
-#def create_michaels_onset_colors():
-#    a = qualitative_hcl(h=[60,360], c=95, l=90)(5)
-#    b = qualitative_hcl(h=[60,360], c=80, l=70)(5)
-#    c = qualitative_hcl(h=[60,360], c=65, l=50)(5)
-#    d = qualitative_hcl(h=[60,360], c=50, l=30)(5)
-#    onsetcol = np.ones((23,4))
-#    onsetcol[0,:3] = np.array([242/256, 242/256, 242/256])
-#    onsetcol[-2,:3] = np.array([162/256, 162/256, 162/256])
-#    onsetcol[-1,:3] = np.array([102/256, 102/256, 102/256])
-#    for i in range(5):
-#        onsetcol[1+0+4*i,:3] = colors.to_rgb(a[i])
-#        onsetcol[1+1+4*i,:3] = colors.to_rgb(b[i])
-#        onsetcol[1+2+4*i,:3] = colors.to_rgb(c[i])
-#        onsetcol[1+3+4*i,:3] = colors.to_rgb(d[i])
-#    newcmp = ListedColormap(onsetcol)
-#    return newcmp
 
 
 def get_xticks(x_extent, inc = 1):
@@ -95,8 +72,6 @@ def plot_fields (fields_list, lon, lat, lon_bounds, lat_bounds, main_title, subt
     fig = plt.figure(figsize=(fig_width,fig_height))
     for i_img in range(n_img):
         ax = fig.add_subplot(100+n_img*10+i_img+1, projection=ccrs.PlateCarree())
-        #ax.imshow(np.tile(np.array([[[230,230,230]]], dtype=np.uint8), [2, 2, 1]), transform=ccrs.PlateCarree(), extent=[-180, 180, -180, 180])
-        #cmesh = ax.pcolormesh(lons_matplot, lats_matplot, ma.array(apcp_mean, mask=np.invert(??)), cmap='BuPu', vmin=vmin, vmax=vmax)
         cmesh = ax.pcolormesh(lons_matplot, lats_matplot, fields_list[i_img], cmap=cmap[i_img], vmin=vmin[i_img], vmax=vmax[i_img])
         ax.set_extent(img_extent, crs=ccrs.PlateCarree())
         ax.set_yticks(get_yticks(img_extent[2:4],dlat), crs=ccrs.PlateCarree())
@@ -122,8 +97,6 @@ def plot_fields (fields_list, lon, lat, lon_bounds, lat_bounds, main_title, subt
     fig.canvas.draw()
     plt.tight_layout(rect=[0,0,1,0.95])
     fig.suptitle(main_title, fontsize=16)
-    # name_fig.append('map_difference_climatology.png')
-    # plt.savefig(output_path_figures+name_fig[-1], dpi=200)
     plt.show()
 
 # ---------------------------------------------------------------------------------------------------------------------
